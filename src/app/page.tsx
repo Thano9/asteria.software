@@ -68,20 +68,7 @@ export default function Home() {
         <ProjectCard 
           title="BattleDex" 
           imageSrc="/images/projects/battledex.png" 
-          href="https://battledex.com"
-          index={0}
-        />
-        <ProjectCard 
-          title="TaskFlow" 
-          imageSrc="/images/projects/taskflow.png" 
-          href="https://taskflow.com"
-          index={1}
-        />
-        <ProjectCard 
-          title="CodeSync" 
-          imageSrc="/images/projects/codesync.png" 
-          href="https://codesync.com"
-          index={2}
+          href="/battledex"
         />
       </div>
     </motion.div>

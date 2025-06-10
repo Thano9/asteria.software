@@ -1,77 +1,51 @@
 'use client';
 
+import { motion } from 'framer-motion';
 import { ArrowRight } from 'lucide-react';
 import Image from 'next/image';
-import Link from 'next/link';
-import { motion } from 'motion/react';
 
 interface ProjectCardProps {
   title: string;
   imageSrc: string;
   href: string;
-  index: number;
+  delay?: number;
 }
 
-export default function ProjectCard({ title, imageSrc, href, index }: ProjectCardProps) {
+export default function ProjectCard({ title, imageSrc, href, delay = 0 }: ProjectCardProps) {
   return (
-    <motion.div
-      initial={{ 
-        filter: 'blur(8px)', 
-        y: 15, 
-        opacity: 0 
-      }}
-      animate={{ 
-        filter: 'blur(0px)', 
-        y: 0, 
-        opacity: 1 
-      }}
+    <motion.a
+      href={href}
+      className="project-card-link"
+      initial={{ opacity: 0, filter: 'blur(10px)' }}
+      animate={{ opacity: 1, filter: 'blur(0px)' }}
       transition={{
-        delay: 1.1 + (index * 0.1),
-        type: 'spring',
-        stiffness: 200,
-        damping: 30,
-        mass: 1,
-        default: {
-          duration: 0.1,
-          ease: 'easeOut'
-        }
+        duration: 0.6,
+        delay,
+        ease: [0.25, 0.46, 0.45, 0.94]
       }}
-      whileHover={{
-        scale: 0.98,
-        transition: {
-          duration: 0.15,
-          ease: 'easeOut'
-        }
+      whileHover={{ 
+        scale: 1.05,
+        transition: { duration: 0.2, ease: "easeOut" }
       }}
     >
-      <Link href={href} className="project-card-link">
-        <motion.div 
-          className="project-card"
-          whileHover={{
-            backgroundColor: 'rgba(255, 255, 255, 0.35)'
-          }}
-          transition={{
-            duration: 0.1,
-            ease: 'easeOut'
-          }}
-        >
-          <div className="card-content">
-            <div className="card-icon">
-              <Image
-                src={imageSrc}
-                alt={`${title} icon`}
-                width={24}
-                height={24}
-                className="card-image"
-              />
-            </div>
-            <p className="card-text">{title}</p>
-            <div className="arrow">
-              <ArrowRight size={16} />
-            </div>
+      <div className="project-card">
+        <div className="card-content">
+          <div className="card-icon">
+            <Image
+              src={imageSrc}
+              alt={`${title} icon`}
+              width={24}
+              height={24}
+              className="card-image"
+              priority={false}
+            />
           </div>
-        </motion.div>
-      </Link>
-    </motion.div>
+          <span className="card-text">{title}</span>
+          <div className="arrow">
+            <ArrowRight size={16} />
+          </div>
+        </div>
+      </div>
+    </motion.a>
   );
 } 

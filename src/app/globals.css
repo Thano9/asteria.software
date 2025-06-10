@@ -1,7 +1,3 @@
-@import url('https://fonts.googleapis.com/css2?family=Instrument+Serif:ital,wght@0,400;1,400&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Nanum+Brush+Script&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Chivo+Mono:wght@100..900&display=swap');
-
 * {
   box-sizing: border-box;
   padding: 0;
@@ -36,33 +32,33 @@ body {
   position: relative;
   width: 285px;
   height: 102px;
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
 }
 
 .asteria-title {
-  position: absolute;
-  top: 0;
-  left: 0;
-  font-family: 'Instrument Serif', serif;
+  font-family: 'Instrument Serif', Georgia, 'Times New Roman', serif;
   font-size: 64px;
   font-weight: 400;
   color: #000000;
-  text-align: left;
-  width: 189px;
+  text-align: center;
   line-height: normal;
   margin: 0;
+  font-display: swap;
 }
 
 .software-subtitle {
   position: absolute;
-  top: 64px;
-  left: 170px;
+  top: 68px;
+  left: 140px;
   display: flex;
   align-items: center;
   justify-content: center;
 }
 
 .software-text {
-  font-family: 'Nanum Brush Script', cursive;
+  font-family: 'Nanum Brush Script', 'Brush Script MT', cursive;
   font-size: 24px;
   color: #000000;
   text-align: left;
@@ -70,6 +66,7 @@ body {
   transform: rotate(359deg);
   line-height: normal;
   margin: 0;
+  font-display: swap;
 }
 
 .projects-container {
@@ -117,7 +114,7 @@ body {
 }
 
 .card-text {
-  font-family: 'Chivo Mono', monospace;
+  font-family: 'Chivo Mono', 'Courier New', monospace;
   font-size: 12px;
   font-weight: 400;
   color: #000000;
@@ -128,6 +125,7 @@ body {
   margin: 0;
   flex-grow: 1;
   margin-left: 8px;
+  font-display: swap;
 }
 
 .arrow {
