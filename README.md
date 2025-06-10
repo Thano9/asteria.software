@@ -1,36 +1,74 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Asteria Software
+
+A modern, animated portfolio website showcasing products and applications by Asteria Software.
+
+## Features
+
+- **Animated UI**: Smooth page load animations with staggered reveals using Motion (Framer Motion)
+- **Project Cards**: Interactive project showcase with hover effects
+- **Modern Design**: Clean, minimalist design with custom typography
+- **Responsive**: Built with Next.js 15 and optimized for all devices
+- **Performance**: Optimized images and animations for fast loading
+
+## Tech Stack
+
+- **Framework**: Next.js 15 with App Router
+- **Styling**: Vanilla CSS with Google Fonts
+- **Animations**: Motion (Framer Motion) for smooth interactions
+- **Icons**: Lucide React for consistent iconography
+- **Deployment**: Optimized for Vercel
+
+## Typography
+
+- **Instrument Serif**: Main title font
+- **Nanum Brush Script**: Subtitle styling
+- **Chivo Mono**: Project card text
 
 ## Getting Started
 
-First, run the development server:
-
 ```bash
+# Install dependencies
+npm install
+
+# Run development server
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+
+# Build for production
+npm run build
+
+# Start production server
+npm start
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Open [http://localhost:3000](http://localhost:3000) to view the site.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Project Structure
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+```
+src/
+├── app/
+│   ├── components/
+│   │   └── ProjectCard.tsx    # Reusable project card component
+│   ├── globals.css            # Global styles and Google Fonts
+│   ├── layout.tsx             # Root layout
+│   └── page.tsx               # Main page
+└── public/
+    └── images/
+        └── projects/          # Project icons and images
+```
 
-## Learn More
+## Animation System
 
-To learn more about Next.js, take a look at the following resources:
+The site uses a carefully crafted animation system with:
+- Blur-to-focus transitions
+- Staggered loading sequences
+- Spring physics for natural motion
+- Hover interactions with scale and color changes
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## Deployment
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+This project is optimized for deployment on Vercel. Simply connect your GitHub repository to Vercel for automatic deployments.
 
-## Deploy on Vercel
+---
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+Built with ❤️ by Asteria Software

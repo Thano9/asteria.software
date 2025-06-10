@@ -1,26 +1,144 @@
-@import "tailwindcss";
+@import url('https://fonts.googleapis.com/css2?family=Instrument+Serif:ital,wght@0,400;1,400&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Nanum+Brush+Script&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Chivo+Mono:wght@100..900&display=swap');
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+html,
+body {
+  max-width: 100vw;
+  overflow-x: hidden;
+  font-family: Arial, sans-serif;
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  background-color: #D3D3D3;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.main-container {
+  position: relative;
+  width: 285px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 11px;
+}
+
+.title-container {
+  position: relative;
+  width: 285px;
+  height: 102px;
+}
+
+.asteria-title {
+  position: absolute;
+  top: 0;
+  left: 0;
+  font-family: 'Instrument Serif', serif;
+  font-size: 64px;
+  font-weight: 400;
+  color: #000000;
+  text-align: left;
+  width: 189px;
+  line-height: normal;
+  margin: 0;
+}
+
+.software-subtitle {
+  position: absolute;
+  top: 64px;
+  left: 170px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.software-text {
+  font-family: 'Nanum Brush Script', cursive;
+  font-size: 24px;
+  color: #000000;
+  text-align: left;
+  white-space: pre;
+  transform: rotate(359deg);
+  line-height: normal;
+  margin: 0;
+}
+
+.projects-container {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  width: 100%;
+}
+
+.project-card-link {
+  text-decoration: none;
+  color: inherit;
+  display: block;
+}
+
+.project-card {
+  background-color: rgba(255, 255, 255, 0.25);
+  border-radius: 8px;
+  width: 285px;
+  padding: 6px;
+}
+
+.card-content {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+}
+
+.card-icon {
+  width: 24px;
+  height: 24px;
+  border-radius: 6.62069px;
+  flex-shrink: 0;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.card-image {
+  border-radius: 6.62069px;
+  object-fit: cover;
+}
+
+.card-text {
+  font-family: 'Chivo Mono', monospace;
+  font-size: 12px;
+  font-weight: 400;
+  color: #000000;
+  text-align: left;
+  white-space: pre;
+  letter-spacing: -0.06px;
+  line-height: normal;
+  margin: 0;
+  flex-grow: 1;
+  margin-left: 8px;
+}
+
+.arrow {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #000000;
+  flex-shrink: 0;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
 }

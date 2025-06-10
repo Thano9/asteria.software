@@ -1,0 +1,21 @@
+---
+description: 
+globs: 
+alwaysApply: true
+---
+---
+description: 
+globs: 
+alwaysApply: true
+---
+# IMPORTANT:
+
+# Always read asteriasoftware.md before writing any code.
+
+# After adding a major feature or completing a milestone, update asteriasoftware.md.
+
+# Document the entire database schema in asteriasoftware.md.
+
+# When implementing motion or animations, always follow animationdocumentation.md, and try to use Framer Motion.
+
+# For new migrations, make sure to add them to the same file.
