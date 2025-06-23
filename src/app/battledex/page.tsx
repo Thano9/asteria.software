@@ -3,8 +3,17 @@
 import { motion } from "motion/react";
 import Image from "next/image";
 import Link from "next/link";
+import { useState } from "react";
 
 export default function BattleDex() {
+  const [isShimmering, setIsShimmering] = useState(false);
+
+  const handleHoverStart = () => {
+    setIsShimmering(true);
+    // Reset shimmer after animation completes
+    setTimeout(() => setIsShimmering(false), 600);
+  };
+
   return (
     <div className="project-container">
       {/* Navigation Header */}
@@ -70,7 +79,7 @@ export default function BattleDex() {
           </motion.h1>
           
           <motion.div 
-            className="download-button-container"
+            className="download-button-wrapper"
             initial={{
               opacity: 0,
               filter: 'blur(10px)',
@@ -83,34 +92,41 @@ export default function BattleDex() {
               y: 0,
               scale: 1
             }}
-            whileHover={{
-              scale: 1.05,
-              y: -4,
-              filter: 'brightness(1.1)'
-            }}
-            whileTap={{
-              scale: 0.98,
-              y: 0
-            }}
             transition={{
               type: "spring",
               stiffness: 200,
               damping: 30,
               mass: 1,
-              delay: 0.7,
-              // Separate transition for hover states
-              scale: { duration: 0.2 },
-              y: { duration: 0.2 },
-              filter: { duration: 0.2 }
+              delay: 0.7
             }}
           >
+            <motion.div 
+              className="download-button-container"
+              whileHover={{
+                scale: 1.05,
+                y: -4,
+                filter: 'brightness(1.3)',
+                transition: {
+                  type: "spring",
+                  stiffness: 300,
+                  damping: 20,
+                  duration: 0.3
+                }
+              }}
+              whileTap={{
+                scale: 0.98,
+                y: 0
+              }}
+              onHoverStart={handleHoverStart}
+            >
             <Image 
               src="/components/button.png"
-              alt="Download BattleDex"
+              alt="Download BattleDx"
               width={185}
               height={56}
               className="download-button-image"
             />
+            <div className={`shimmer-overlay ${isShimmering ? 'active' : ''}`}></div>
             <div className="download-text-overlay">
               <div className="apple-logo">
                 <Image 
@@ -122,6 +138,7 @@ export default function BattleDex() {
               </div>
               <span className="download-text">Download</span>
             </div>
+            </motion.div>
           </motion.div>
         </div>
 
