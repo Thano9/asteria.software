@@ -13,6 +13,14 @@ body {
   font-family: Arial, sans-serif;
 }
 
+/* Override html/body styles for privacy policy page */
+html:has(.privacy-policy-container),
+body:has(.privacy-policy-container) {
+  overflow: visible;
+  height: auto;
+  min-height: 100vh;
+}
+
 body {
   background-color: #D3D3D3;
   display: flex;
@@ -23,6 +31,17 @@ body {
   left: 0;
   right: 0;
   bottom: 0;
+}
+
+/* Override body styles for privacy policy page */
+body:has(.privacy-policy-container) {
+  position: static;
+  display: block;
+  align-items: unset;
+  justify-content: unset;
+  height: auto;
+  min-height: 100vh;
+  overflow-y: auto;
 }
 
 .main-container {
@@ -215,5 +234,172 @@ a {
     .main-container {
       transform: translateY(-2vh);
     }
+  }
+}
+
+/* Privacy Policy Styles */
+.privacy-policy-container {
+  min-height: 100vh;
+  background-color: #D3D3D3;
+  padding: 20px;
+  font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Display', 'SF Pro Text', system-ui, sans-serif;
+  overflow-y: auto;
+  position: static;
+  display: block;
+}
+
+.privacy-policy-content {
+  max-width: 800px;
+  margin: 0 auto;
+  background-color: rgba(255, 255, 255, 0.9);
+  border-radius: 12px;
+  padding: 30px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+}
+
+.back-button {
+  margin-bottom: 20px;
+}
+
+.back-link {
+  font-family: 'Chivo Mono', 'Courier New', monospace;
+  font-size: 14px;
+  color: #666;
+  text-decoration: none;
+  transition: color 0.2s ease;
+}
+
+.back-link:hover {
+  color: #000;
+}
+
+.privacy-header {
+  border-bottom: 2px solid #e0e0e0;
+  padding-bottom: 20px;
+  margin-bottom: 30px;
+}
+
+.privacy-header h1 {
+  font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Display', system-ui, sans-serif;
+  font-size: 32px;
+  font-weight: 600;
+  color: #000;
+  margin-bottom: 15px;
+  line-height: 1.2;
+}
+
+.dates {
+  display: flex;
+  gap: 20px;
+  flex-wrap: wrap;
+}
+
+.dates p {
+  font-family: 'Chivo Mono', 'Courier New', monospace;
+  font-size: 12px;
+  color: #666;
+  margin: 0;
+}
+
+.privacy-content {
+  line-height: 1.6;
+}
+
+.privacy-content section {
+  margin-bottom: 30px;
+}
+
+.privacy-content h2 {
+  font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Display', system-ui, sans-serif;
+  font-size: 24px;
+  font-weight: 500;
+  color: #000;
+  margin-bottom: 15px;
+  border-bottom: 1px solid #e0e0e0;
+  padding-bottom: 8px;
+}
+
+.privacy-content h3 {
+  font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Display', system-ui, sans-serif;
+  font-size: 18px;
+  font-weight: 600;
+  color: #000;
+  margin-bottom: 10px;
+  margin-top: 20px;
+}
+
+.privacy-content p {
+  font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Text', system-ui, sans-serif;
+  font-size: 14px;
+  color: #333;
+  margin-bottom: 12px;
+}
+
+.privacy-content ul,
+.privacy-content ol {
+  margin-left: 20px;
+  margin-bottom: 12px;
+}
+
+.privacy-content li {
+  font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Text', system-ui, sans-serif;
+  font-size: 14px;
+  color: #333;
+  margin-bottom: 6px;
+}
+
+.privacy-content strong {
+  font-weight: 600;
+  color: #000;
+}
+
+.privacy-content a {
+  color: #0066cc;
+  text-decoration: underline;
+}
+
+.privacy-content a:hover {
+  color: #004499;
+}
+
+.summary {
+  background-color: rgba(0, 102, 204, 0.05);
+  border-left: 4px solid #0066cc;
+  padding: 20px;
+  border-radius: 8px;
+}
+
+.summary h2 {
+  border-bottom: none;
+  color: #0066cc;
+  margin-bottom: 10px;
+}
+
+/* Mobile responsiveness for privacy policy */
+@media (max-width: 768px) {
+  .privacy-policy-container {
+    padding: 15px;
+  }
+  
+  .privacy-policy-content {
+    padding: 20px;
+  }
+  
+  .privacy-header h1 {
+    font-size: 24px;
+  }
+  
+  .privacy-content h2 {
+    font-size: 20px;
+  }
+  
+  .dates {
+    flex-direction: column;
+    gap: 5px;
+  }
+  
+  .privacy-content ul,
+  .privacy-content ol {
+    margin-left: 15px;
   }
 }
