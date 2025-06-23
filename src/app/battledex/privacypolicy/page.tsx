@@ -22,7 +22,7 @@ export default function BattleDexPrivacyPolicy() {
           <section>
             <h2>Introduction</h2>
             <p>
-              BattleDex ("we," "our," or "us") is committed to protecting your privacy. This Privacy Policy explains how we handle information when you use our mobile application BattleDex (the "App").
+              BattleDex (&quot;we,&quot; &quot;our,&quot; or &quot;us&quot;) is committed to protecting your privacy. This Privacy Policy explains how we handle information when you use our mobile application BattleDex (the &quot;App&quot;).
             </p>
           </section>
 
@@ -30,7 +30,7 @@ export default function BattleDexPrivacyPolicy() {
             <h2>Information We Collect</h2>
             <h3>Analytics Data (Not Linked to You)</h3>
             <p>
-              We collect anonymous usage data through Apple's built-in App Analytics to help us improve the App. This data is automatically collected by Apple and shared with us in an aggregated, anonymous format. This may include:
+              We collect anonymous usage data through Apple&apos;s built-in App Analytics to help us improve the App. This data is automatically collected by Apple and shared with us in an aggregated, anonymous format. This may include:
             </p>
             <ul>
               <li>App launch frequency</li>
@@ -75,7 +75,7 @@ export default function BattleDexPrivacyPolicy() {
             <ul>
               <li>We do not sell, rent, or trade any user data</li>
               <li>We do not share data with third parties for marketing purposes</li>
-              <li>The only data sharing occurs through Apple's Analytics platform, which provides us with anonymous, aggregated usage statistics</li>
+              <li>The only data sharing occurs through Apple&apos;s Analytics platform, which provides us with anonymous, aggregated usage statistics</li>
               <li>We may disclose information if required by law or to protect our legal rights</li>
             </ul>
           </section>
@@ -95,7 +95,7 @@ export default function BattleDexPrivacyPolicy() {
             <p>Since we do not collect personal information:</p>
             <ul>
               <li>There is no personal data to access, modify, or delete</li>
-              <li>You can opt out of analytics sharing through your device's privacy settings</li>
+              <li>You can opt out of analytics sharing through your device&apos;s privacy settings</li>
               <li>You can delete the App at any time to remove all local data</li>
             </ul>
           </section>
@@ -119,7 +119,7 @@ export default function BattleDexPrivacyPolicy() {
           <section>
             <h2>International Users</h2>
             <p>
-              BattleDex is available worldwide. The anonymous analytics data may be processed in the United States where Apple's servers are located, but this data cannot be linked to individual users.
+              BattleDex is available worldwide. The anonymous analytics data may be processed in the United States where Apple&apos;s servers are located, but this data cannot be linked to individual users.
             </p>
           </section>
 
@@ -127,7 +127,7 @@ export default function BattleDexPrivacyPolicy() {
             <h2>Changes to This Privacy Policy</h2>
             <p>We may update this Privacy Policy from time to time. We will notify users of any material changes by:</p>
             <ul>
-              <li>Updating the "Last Updated" date at the top of this policy</li>
+              <li>Updating the &quot;Last Updated&quot; date at the top of this policy</li>
               <li>Providing notice through the App Store listing</li>
               <li>Including update information in app release notes</li>
             </ul>
@@ -137,7 +137,7 @@ export default function BattleDexPrivacyPolicy() {
             <h2>Third-Party Services</h2>
             <p>BattleDex uses:</p>
             <ul>
-              <li>Apple App Analytics: For anonymous usage statistics (covered by Apple's Privacy Policy)</li>
+              <li>Apple App Analytics: For anonymous usage statistics (covered by Apple&apos;s Privacy Policy)</li>
               <li>No other third-party services that collect user data</li>
             </ul>
           </section>
@@ -154,7 +154,7 @@ export default function BattleDexPrivacyPolicy() {
           <section>
             <h2>Legal Basis for Processing (GDPR)</h2>
             <p>
-              For users in the European Union, our legal basis for processing anonymous analytics data is legitimate interest in improving our App's functionality and user experience.
+              For users in the European Union, our legal basis for processing anonymous analytics data is legitimate interest in improving our App&apos;s functionality and user experience.
             </p>
           </section>
 
