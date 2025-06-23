@@ -110,7 +110,7 @@ export default function BattleDexPrivacyPolicy() {
           </section>
 
           <section>
-            <h2>Children's Privacy</h2>
+            <h2>Children&apos;s Privacy</h2>
             <p>
               BattleDex is suitable for users of all ages. We do not knowingly collect personal information from children under 13. Since our App only uses anonymous analytics data provided by Apple, no personal information from users of any age is collected.
             </p>
