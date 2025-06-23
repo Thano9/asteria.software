@@ -1,3 +1,6 @@
+"use client";
+
+import { motion } from "motion/react";
 import Image from "next/image";
 import Link from "next/link";
 
@@ -5,7 +8,26 @@ export default function BattleDex() {
   return (
     <div className="project-container">
       {/* Navigation Header */}
-      <header className="navigation-header">
+      <motion.header 
+        className="navigation-header"
+        initial={{
+          opacity: 0,
+          filter: 'blur(10px)',
+          y: -20
+        }}
+        animate={{
+          opacity: 1,
+          filter: 'blur(0px)',
+          y: 0
+        }}
+        transition={{
+          type: "spring",
+          stiffness: 200,
+          damping: 30,
+          mass: 1,
+          delay: 0.1
+        }}
+      >
         <Link href="/" className="back-link-project">
           ← asteria.software
         </Link>
@@ -18,17 +40,70 @@ export default function BattleDex() {
             Support
           </Link>
         </div>
-      </header>
+      </motion.header>
 
       {/* Main Content */}
       <main className="project-main">
         <div className="project-content">
-          <h1 className="project-title">
+          <motion.h1 
+            className="project-title"
+            initial={{
+              opacity: 0,
+              filter: 'blur(12px)',
+              y: 25
+            }}
+            animate={{
+              opacity: 1,
+              filter: 'blur(0px)',
+              y: 0
+            }}
+            transition={{
+              type: "spring",
+              stiffness: 180,
+              damping: 28,
+              mass: 1,
+              delay: 0.5
+            }}
+          >
             Master Pokémon<br/>
             Matchups
-          </h1>
+          </motion.h1>
           
-          <div className="download-button-container">
+          <motion.div 
+            className="download-button-container"
+            initial={{
+              opacity: 0,
+              filter: 'blur(10px)',
+              y: 20,
+              scale: 1
+            }}
+            animate={{
+              opacity: 1,
+              filter: 'blur(0px)',
+              y: 0,
+              scale: 1
+            }}
+            whileHover={{
+              scale: 1.05,
+              y: -4,
+              filter: 'brightness(1.1)'
+            }}
+            whileTap={{
+              scale: 0.98,
+              y: 0
+            }}
+            transition={{
+              type: "spring",
+              stiffness: 200,
+              damping: 30,
+              mass: 1,
+              delay: 0.7,
+              // Separate transition for hover states
+              scale: { duration: 0.2 },
+              y: { duration: 0.2 },
+              filter: { duration: 0.2 }
+            }}
+          >
             <Image 
               src="/components/button.png"
               alt="Download BattleDex"
@@ -47,11 +122,32 @@ export default function BattleDex() {
               </div>
               <span className="download-text">Download</span>
             </div>
-          </div>
+          </motion.div>
         </div>
 
         {/* Phone Mockup */}
-        <div className="phone-mockup-container">
+        <motion.div 
+          className="phone-mockup-container"
+          initial={{
+            opacity: 0,
+            filter: 'blur(10px)',
+            y: 120,
+            scale: .8
+          }}
+          animate={{
+            opacity: 1,
+            filter: 'blur(0px)',
+            y: 0,
+            scale: 1
+          }}
+          transition={{
+            type: "spring",
+            stiffness: 200,
+            damping: 30,
+            mass: 1,
+            delay: .95
+          }}
+        >
           <div className="phone-frame">
             {/* Phone Frame Image */}
             <Image 
@@ -73,7 +169,7 @@ export default function BattleDex() {
               />
             </div>
           </div>
-        </div>
+        </motion.div>
       </main>
     </div>
   );
