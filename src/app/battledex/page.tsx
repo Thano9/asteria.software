@@ -4,6 +4,41 @@ import { motion } from "motion/react";
 import Image from "next/image";
 import Link from "next/link";
 import { useState } from "react";
+import localFont from "next/font/local";
+
+const mondwest = localFont({
+  src: [
+    {
+      path: "../../../public/fonts/Mondwest-Regular.woff2",
+      weight: "400",
+      style: "normal",
+    },
+    {
+      path: "../../../public/fonts/Mondwest-Bold.woff2",
+      weight: "700",
+      style: "normal",
+    },
+  ],
+  variable: "--font-mondwest",
+  display: "swap",
+});
+
+const neueBit = localFont({
+  src: [
+    {
+      path: "../../../public/fonts/NeueBit-Regular.woff2",
+      weight: "400",
+      style: "normal",
+    },
+    {
+      path: "../../../public/fonts/NeueBit-Bold.woff2",
+      weight: "700",
+      style: "normal",
+    },
+  ],
+  variable: "--font-neueBit",
+  display: "swap",
+});
 
 export default function BattleDex() {
   const [isShimmering, setIsShimmering] = useState(false);
@@ -121,7 +156,7 @@ export default function BattleDex() {
             >
             <Image 
               src="/components/button.png"
-              alt="Download BattleDx"
+              alt="Download BattleDex"
               width={185}
               height={56}
               className="download-button-image"
