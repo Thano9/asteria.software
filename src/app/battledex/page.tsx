@@ -50,7 +50,7 @@ export default function BattleDex() {
   };
 
   return (
-    <div className="project-container">
+    <div className={`project-container ${mondwest.variable} ${neueBit.variable}`}>
       {/* Navigation Header */}
       <motion.header 
         className="navigation-header"
