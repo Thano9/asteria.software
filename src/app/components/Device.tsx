@@ -81,6 +81,7 @@ interface DeviceProps {
   desktopScale: number;
   mobileScale?: number;
   breakpoint?: number;
+  forceDarkMode?: boolean;
   onClick: () => void;
   onVideoRef?: (ref: HTMLVideoElement | null) => void;
   onImageLoad?: (dimensions: { width: number; height: number }) => void;
@@ -94,6 +95,7 @@ const Device = ({
   desktopScale,
   mobileScale = 1.0,
   breakpoint = 680,
+  forceDarkMode = false,
   onClick,
   onVideoRef,
   onImageLoad,
@@ -217,21 +219,8 @@ const Device = ({
               fill
               style={{
                 pointerEvents: 'none',
-                zIndex: 10
-              }}
-            />
-            {/* Dark mode overlay - using Tailwind classes */}
-            <div 
-              className="absolute inset-0 bg-black pointer-events-none z-20 opacity-0 dark:opacity-50 transition-opacity duration-300"
-              style={{ 
-                mask: `url(${frameConfig.imagePath})`,
-                WebkitMask: `url(${frameConfig.imagePath})`,
-                maskSize: '100% 100%',
-                WebkitMaskSize: '100% 100%',
-                maskRepeat: 'no-repeat',
-                WebkitMaskRepeat: 'no-repeat',
-                maskPosition: '0 0',
-                WebkitMaskPosition: '0 0'
+                zIndex: 10,
+                filter: forceDarkMode ? 'brightness(0.6) contrast(1.1)' : 'none'
               }}
             />
           </>

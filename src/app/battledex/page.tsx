@@ -229,9 +229,10 @@ export default function BattleDex() {
             project={battledexProject}
             isActive={true}
             shouldLoad={true}
-            desktopScale={1.6}
+            desktopScale={1.5}
             mobileScale={1.3}
             breakpoint={400}
+            forceDarkMode={true}
             onClick={() => {}}
             className="device-no-pointer"
           />
