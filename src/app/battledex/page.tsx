@@ -58,8 +58,8 @@ export default function BattleDex() {
   }, []);
 
   // Responsive scale values
-  const desktopScale = 1;
-  const mobileScale = .8;
+  const desktopScale = 1.2;
+  const mobileScale = 1;
   const breakpoint = 400;
 
   // Calculate base scale based on screen size
