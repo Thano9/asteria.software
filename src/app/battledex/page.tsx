@@ -1,9 +1,9 @@
 "use client";
 
-import { motion } from "motion/react";
+import { motion, useScroll, useTransform } from "motion/react";
 import Image from "next/image";
 import Link from "next/link";
-import { useState } from "react";
+import { useState, useRef, useEffect } from "react";
 import localFont from "next/font/local";
 import Device, { DeviceProject } from "../components/Device";
 
@@ -43,6 +43,42 @@ const neueBit = localFont({
 
 export default function BattleDex() {
   const [isShimmering, setIsShimmering] = useState(false);
+  const [windowWidth, setWindowWidth] = useState<number | null>(null);
+  const [hasMounted, setHasMounted] = useState(false);
+  const containerRef = useRef<HTMLDivElement>(null);
+
+  // Handle responsive scaling
+  useEffect(() => {
+    setHasMounted(true);
+    setWindowWidth(window.innerWidth);
+    
+    const handleResize = () => setWindowWidth(window.innerWidth);
+    window.addEventListener('resize', handleResize);
+    return () => window.removeEventListener('resize', handleResize);
+  }, []);
+
+  // Responsive scale values
+  const desktopScale = 1.2;
+  const mobileScale = 1.3;
+  const breakpoint = 400;
+
+  // Calculate base scale based on screen size
+  const baseScale = !hasMounted || windowWidth === null 
+    ? desktopScale 
+    : windowWidth <= breakpoint ? mobileScale : desktopScale;
+
+  // Track scroll progress
+  const { scrollYProgress } = useScroll({
+    target: containerRef,
+    offset: ["start start", "end start"]
+  });
+
+  // Transform scroll progress to scale values (multiply base scale by scroll factor)
+  const scrollScaleFactor = useTransform(scrollYProgress, [0, 1], [1, 0.5]);
+  const phoneScale = useTransform(() => baseScale * scrollScaleFactor.get());
+
+  // Parallax effect for text and button
+  const textParallax = useTransform(scrollYProgress, [0, 1], [0, -100]);
 
   const handleHoverStart = () => {
     setIsShimmering(true);
@@ -74,7 +110,7 @@ export default function BattleDex() {
   };
 
   return (
-    <div className={`project-container ${mondwest.variable} ${neueBit.variable}`}>
+    <div ref={containerRef} className={`project-container ${mondwest.variable} ${neueBit.variable}`}>
       {/* Navigation Header */}
       <motion.header 
         className="navigation-header"
@@ -112,7 +148,10 @@ export default function BattleDex() {
 
       {/* Main Content */}
       <main className="project-main">
-        <div className="project-content">
+        <motion.div 
+          className="project-content"
+          style={{ y: textParallax }}
+        >
           <motion.h1 
             className="project-title"
             initial={{
@@ -200,7 +239,7 @@ export default function BattleDex() {
             </div>
             </motion.div>
           </motion.div>
-        </div>
+        </motion.div>
 
         {/* Phone Mockup */}
         <motion.div 
@@ -225,18 +264,24 @@ export default function BattleDex() {
             delay: .95
           }}
         >
-          <Device
-            project={battledexProject}
-            isActive={true}
-            shouldLoad={true}
-            desktopScale={1.5}
-            mobileScale={1.3}
-            breakpoint={400}
-            forceDarkMode={true}
-            onClick={() => {}}
-            className="device-no-pointer"
-          />
+          <motion.div style={{ 
+            scale: phoneScale,
+            transformOrigin: 'top center'
+          }}>
+            <Device
+              project={battledexProject}
+              isActive={true}
+              shouldLoad={true}
+              scale={baseScale}
+              forceDarkMode={true}
+              onClick={() => {}}
+              className="device-no-pointer"
+            />
+          </motion.div>
         </motion.div>
+
+        {/* Spacer for scrolling */}
+        <div style={{ height: '3.5vh' }} />
       </main>
     </div>
   );

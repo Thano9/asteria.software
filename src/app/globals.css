@@ -7,17 +7,17 @@
 html,
 body {
   max-width: 100vw;
-  height: 100dvh; /* Dynamic viewport height for mobile */
-  overflow: hidden;
+  height: auto;
+  min-height: 100dvh;
+  overflow: visible;
   font-family: Arial, sans-serif;
 }
 
-/* Override html/body styles for privacy policy page */
-html:has(.privacy-policy-container),
-body:has(.privacy-policy-container) {
-  overflow: visible;
-  height: auto;
-  min-height: 100dvh;
+/* Override html/body styles for main landing page only */
+html:has(.main-container),
+body:has(.main-container) {
+  height: 100dvh;
+  overflow: hidden;
 }
 
 body {
@@ -403,6 +403,7 @@ a {
 }
 
 /* Project Page Styles */
+html:has(.project-container),
 body:has(.project-container) {
   background-color: transparent;
   position: static;
@@ -413,6 +414,9 @@ body:has(.project-container) {
   min-height: 100dvh;
   background: linear-gradient(180deg, #000000 0%, #272626 100%);
   color: black;
+  /* Disable elastic scroll bounce */
+  overscroll-behavior: none;
+  -webkit-overflow-scrolling: touch;
 }
 
 /* Navigation Header */
@@ -421,8 +425,9 @@ body:has(.project-container) {
   justify-content: space-between;
   align-items: center;
   padding: 32px;
-  position: relative;
-  z-index: 10;
+  position: sticky;
+  top: 0;
+  z-index: 100;
 }
 
 .back-link-project {
@@ -563,8 +568,6 @@ body:has(.project-container) {
   font-weight: 400;
 }
 
-
-
 /* Device Component Overrides */
 .device-no-pointer {
   cursor: default !important;
@@ -581,6 +584,5 @@ body:has(.project-container) {
     font-size: 72px;
     line-height: 72px;
   }
-
 
 }

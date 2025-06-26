@@ -78,9 +78,7 @@ interface DeviceProps {
   project: DeviceProject;
   isActive: boolean;
   shouldLoad: boolean;
-  desktopScale: number;
-  mobileScale?: number;
-  breakpoint?: number;
+  scale: number;
   forceDarkMode?: boolean;
   onClick: () => void;
   onVideoRef?: (ref: HTMLVideoElement | null) => void;
@@ -92,9 +90,7 @@ const Device = ({
   project,
   isActive,
   shouldLoad,
-  desktopScale,
-  mobileScale = 1.0,
-  breakpoint = 680,
+  scale,
   forceDarkMode = false,
   onClick,
   onVideoRef,
@@ -104,23 +100,6 @@ const Device = ({
   const videoRef = useRef<HTMLVideoElement | null>(null);
   const isFrameless = project.deviceFrame === 'frameless';
   
-  // Responsive scaling logic - avoid hydration mismatch
-  const [windowWidth, setWindowWidth] = useState<number | null>(null);
-  const [hasMounted, setHasMounted] = useState(false);
-  
-  useEffect(() => {
-    setHasMounted(true);
-    setWindowWidth(window.innerWidth);
-    
-    const handleResize = () => setWindowWidth(window.innerWidth);
-    window.addEventListener('resize', handleResize);
-    return () => window.removeEventListener('resize', handleResize);
-  }, []);
-
-  // Use desktop scale as default until client hydrates
-  const scale = !hasMounted || windowWidth === null 
-    ? desktopScale 
-    : windowWidth <= breakpoint ? mobileScale : desktopScale;
   const deviceFrames = getDeviceFrames(scale);
   const frameConfig = {
     ...deviceFrames[project.deviceFrame],
