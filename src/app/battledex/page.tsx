@@ -5,6 +5,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { useState } from "react";
 import localFont from "next/font/local";
+import Device, { DeviceProject } from "../components/Device";
 
 const mondwest = localFont({
   src: [
@@ -47,6 +48,29 @@ export default function BattleDex() {
     setIsShimmering(true);
     // Reset shimmer after animation completes
     setTimeout(() => setIsShimmering(false), 600);
+  };
+
+  const handleDownloadClick = () => {
+    // Detect if user is on iOS
+    const isIOS = /iPad|iPhone|iPod/.test(navigator.userAgent);
+    
+    if (isIOS) {
+      // Open App Store app on iOS
+      window.location.href = "https://apps.apple.com/us/app/battledex-assistant/id6746467637";
+    } else {
+      // Open App Store web page on other devices
+      window.open("https://apps.apple.com/us/app/battledex-assistant/id6746467637", "_blank");
+    }
+  };
+
+  // Device configuration
+  const battledexProject: DeviceProject = {
+    id: 1,
+    title: "BattleDex",
+    description: "Master Pokémon Matchups",
+    slug: "battledex",
+    deviceFrame: "iphone-16-pro",
+    teaserUrl: "/images/projects/battledex/teaser.png"
   };
 
   return (
@@ -153,6 +177,7 @@ export default function BattleDex() {
                 y: 0
               }}
               onHoverStart={handleHoverStart}
+              onClick={handleDownloadClick}
             >
             <Image 
               src="/components/button.png"
@@ -200,27 +225,16 @@ export default function BattleDex() {
             delay: .95
           }}
         >
-          <div className="phone-frame">
-            {/* Phone Frame Image */}
-            <Image 
-              src="/images/frames/iphone-16-pro-frame.png"
-              alt="iPhone 16 Pro Frame"
-              fill
-              className="frame-image"
-              priority
-            />
-            
-            {/* Phone Screen Content */}
-            <div className="phone-screen">
-              <Image 
-                src="/images/projects/battledex/teaser.png"
-                alt="BattleDex App Screenshot"
-                fill
-                className="screen-content"
-                priority
-              />
-            </div>
-          </div>
+          <Device
+            project={battledexProject}
+            isActive={true}
+            shouldLoad={true}
+            desktopScale={1.6}
+            mobileScale={1.3}
+            breakpoint={400}
+            onClick={() => {}}
+            className="device-no-pointer"
+          />
         </motion.div>
       </main>
     </div>
