@@ -81,7 +81,7 @@ export const metadata: Metadata = {
     siteName: "Asteria Software",
     images: [
       {
-        url: "/og-image.svg",
+        url: "/og-image.png",
         width: 1200,
         height: 630,
         alt: "Asteria Software - Products and Apps",
