@@ -1,4 +1,3 @@
-import Link from 'next/link';
 import ProjectNavigation from '../../components/ProjectNavigation';
 
 export default function BattleDexPrivacyPolicy() {
