@@ -1,19 +1,23 @@
 import Link from 'next/link';
+import ProjectNavigation from '../../components/ProjectNavigation';
 
 export default function BattleDexPrivacyPolicy() {
   return (
-    <div className="privacy-policy-container">
+    <div className="project-container">
+      <ProjectNavigation 
+        backLink={{
+          href: "/battledex",
+          label: "← Back to BattleDex"
+        }}
+        navigationLinks={[
+          { href: "/battledex/support", label: "Support" }
+        ]}
+      />
+      
       <div className="privacy-policy-content">
-        <div className="back-button">
-          <Link href="/battledex" className="back-link">
-            ← Back to BattleDex
-          </Link>
-        </div>
-        
         <header className="privacy-header">
           <h1>Privacy Policy for BattleDex</h1>
           <div className="dates">
-            <p><strong>Effective Date:</strong> June 22, 2025</p>
             <p><strong>Last Updated:</strong> June 22, 2025</p>
           </div>
         </header>

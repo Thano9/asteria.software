@@ -25,11 +25,8 @@ body {
   display: flex;
   align-items: center;
   justify-content: center;
-  position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
+  width: 100vw;
+  height: 100dvh;
 }
 
 /* Override body styles for privacy policy page */
@@ -51,7 +48,7 @@ body:has(.privacy-policy-container) {
   align-items: center;
   gap: 11px;
   max-height: 100dvh;
-  overflow: hidden;
+  overflow: visible;
 }
 
 .title-container {
@@ -110,9 +107,9 @@ body:has(.privacy-policy-container) {
 
 .project-card {
   background-color: rgba(255, 255, 255, 0.25);
-  border-radius: 8px;
-  width: 285px;
-  padding: 6px;
+  border-radius: 12px;
+  width: auto;
+  padding: 8px 10px 8px 8px;
 }
 
 .card-content {
@@ -124,9 +121,9 @@ body:has(.privacy-policy-container) {
 }
 
 .card-icon {
-  width: 24px;
-  height: 24px;
-  border-radius: 6.62069px;
+  width: 32px;
+  height: 32px;
+  border-radius: 8px;
   flex-shrink: 0;
   overflow: hidden;
   display: flex;
@@ -135,22 +132,22 @@ body:has(.privacy-policy-container) {
 }
 
 .card-image {
-  border-radius: 6.62069px;
+  border-radius: 8px;
   object-fit: cover;
 }
 
 .card-text {
   font-family: 'Chivo Mono', 'Courier New', monospace;
-  font-size: 12px;
-  font-weight: 400;
+  font-size: 14px;
+  font-weight: 500;
   color: #000000;
   text-align: left;
   white-space: pre;
-  letter-spacing: -0.06px;
+  letter-spacing: -0.2px;
   line-height: normal;
   margin: 0;
   flex-grow: 1;
-  margin-left: 8px;
+  margin-left: 4px;
   font-display: swap;
 }
 
@@ -220,25 +217,12 @@ a {
   body {
     height: 100dvh;
   }
-  
-  .main-container {
-    transform: translateY(-3vh);
-  }
-}
-
-/* Very specific fix for iOS Chrome mobile centering */
-@supports (-webkit-touch-callout: none) {
-  @media (max-width: 768px) {
-    .main-container {
-      transform: translateY(-2vh);
-    }
-  }
 }
 
 /* Privacy Policy Styles */
 .privacy-policy-container {
   min-height: 100dvh;
-  background-color: #D3D3D3;
+  background: linear-gradient(180deg, #000000 0%, #272626 100%);
   padding: 20px;
   font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Display', 'SF Pro Text', system-ui, sans-serif;
   overflow-y: auto;
@@ -412,11 +396,11 @@ body:has(.project-container) {
   justify-content: unset;
   height: auto;
   min-height: 100dvh;
-  background: linear-gradient(180deg, #000000 0%, #272626 100%);
+  background: linear-gradient(180deg, #000000 0%, #272626 100%) no-repeat;
+  background-size: 100% 100dvh;
+  background-attachment: fixed;
   color: black;
-  /* Disable elastic scroll bounce */
   overscroll-behavior: none;
-  -webkit-overflow-scrolling: touch;
 }
 
 /* Navigation Header */
@@ -425,9 +409,8 @@ body:has(.project-container) {
   justify-content: space-between;
   align-items: center;
   padding: 32px;
-  position: sticky;
-  top: 0;
-  z-index: 100;
+  position: relative;
+  z-index: 10;
 }
 
 .back-link-project {
@@ -568,7 +551,7 @@ body:has(.project-container) {
   font-weight: 400;
 }
 
-/* Device Component Overrides */
+
 .device-no-pointer {
   cursor: default !important;
 }

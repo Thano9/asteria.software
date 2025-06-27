@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { Instrument_Serif, Nanum_Brush_Script, Chivo_Mono } from "next/font/google";
+import localFont from "next/font/local";
 import "./globals.css";
 
 const instrumentSerif = Instrument_Serif({
@@ -20,6 +21,40 @@ const chivoMono = Chivo_Mono({
   subsets: ["latin"],
   weight: ["400"],
   variable: "--font-chivo-mono",
+  display: "swap",
+});
+
+const mondwest = localFont({
+  src: [
+    {
+      path: "../../public/fonts/Mondwest-Regular.woff2",
+      weight: "400",
+      style: "normal",
+    },
+    {
+      path: "../../public/fonts/Mondwest-Bold.woff2",
+      weight: "700",
+      style: "normal",
+    },
+  ],
+  variable: "--font-mondwest",
+  display: "swap",
+});
+
+const neueBit = localFont({
+  src: [
+    {
+      path: "../../public/fonts/NeueBit-Regular.woff2",
+      weight: "400",
+      style: "normal",
+    },
+    {
+      path: "../../public/fonts/NeueBit-Bold.woff2",
+      weight: "700",
+      style: "normal",
+    },
+  ],
+  variable: "--font-neueBit",
   display: "swap",
 });
 
@@ -81,7 +116,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={`${instrumentSerif.variable} ${nanumBrushScript.variable} ${chivoMono.variable} antialiased`}>
+      <body className={`${instrumentSerif.variable} ${nanumBrushScript.variable} ${chivoMono.variable} ${mondwest.variable} ${neueBit.variable} antialiased`}>
         {children}
       </body>
     </html>

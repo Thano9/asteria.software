@@ -64,13 +64,34 @@ export default function Home() {
         </div>
       </motion.div>
       
-      <div className="projects-container" style={{ pointerEvents: hasLoaded ? 'auto' : 'none' }}>
+      <motion.div 
+        className="projects-container" 
+        style={{ pointerEvents: hasLoaded ? 'auto' : 'none' }}
+        initial={{ 
+          filter: 'blur(10px)', 
+          y: 20, 
+          opacity: 0
+        }}
+        animate={{ 
+          filter: 'blur(0px)', 
+          y: 0, 
+          opacity: 1
+        }}
+        transition={{
+          delay: 0.4,
+          type: 'spring',
+          stiffness: 200,
+          damping: 30,
+          mass: 1
+        }}
+      >
         <ProjectCard 
           title="BattleDex" 
-          imageSrc="/images/projects/battledex.png" 
+          imageSrc="/images/projects/battledex/icon.png" 
           href="/battledex"
+          delay={0}
         />
-      </div>
+      </motion.div>
     </motion.div>
   );
 }

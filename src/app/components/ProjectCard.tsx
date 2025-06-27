@@ -34,8 +34,8 @@ export default function ProjectCard({ title, imageSrc, href, delay = 0 }: Projec
             <Image
               src={imageSrc}
               alt={`${title} icon`}
-              width={24}
-              height={24}
+              width={26}
+              height={26}
               className="card-image"
               priority={false}
             />
