@@ -33,13 +33,13 @@ const BASE_DEVICE_FRAMES: Record<string, Omit<DeviceFrame, 'dimensions' | 'conte
 }> = {
   "iphone-16-pro": {
     name: "iPhone 16 Pro",
-    imagePath: "/images/carousel/frames/iphone-16-pro-frame.png",
+    imagePath: "/images/frames/iphone-16-pro-frame.png",
     dimensions: { width: 255, height: 530 },
     contentArea: { vertical: 8, horizontal: 10, borderRadius: 30 }
   },
   "iphone-11-pro": {
     name: "iPhone 11 Pro",
-    imagePath: "/images/carousel/frames/iphone-11-pro-frame.png",
+    imagePath: "/images/frames/iphone-11-pro-frame.png",
     dimensions: { width: 260, height: 530 },
     contentArea: { vertical: 25, horizontal: 24, borderRadius: 25 }
   },
@@ -101,13 +101,7 @@ const Device = ({
   const isFrameless = project.deviceFrame === 'frameless';
   
   const deviceFrames = getDeviceFrames(scale);
-  const frameConfig = {
-    ...deviceFrames[project.deviceFrame],
-    // Override image path for projects that use different frame locations
-    imagePath: project.deviceFrame === 'iphone-16-pro' && project.slug === 'battledex' 
-      ? "/images/frames/iphone-16-pro-frame.png"
-      : deviceFrames[project.deviceFrame].imagePath
-  };
+  const frameConfig = deviceFrames[project.deviceFrame];
   const actualDimensions = frameConfig.dimensions;
 
   // Helper function to detect content type from URL
@@ -136,17 +130,27 @@ const Device = ({
   }, [isActive]);
 
   const handleVideoError = (e: React.SyntheticEvent<HTMLVideoElement>) => {
+    console.warn('Video failed to load:', project.teaserUrl);
     const target = e.target as HTMLVideoElement;
     target.style.display = 'none';
     const parent = target.parentElement;
     if (parent) {
       parent.innerHTML = `
-        <img 
-          src="${project.teaserUrl}" 
-          alt="${project.title} teaser" 
-          style="height: 100%; width: 100%; object-fit: cover;"
-          onerror="this.style.display='none'; this.parentElement.innerHTML='<div style=\\"height: 100%; width: 100%; background-color: #9ca3af;\\"></div>';"
-        />
+        <div style="
+          height: 100%; 
+          width: 100%; 
+          background-color: #f3f4f6;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          color: #6b7280;
+          font-size: 14px;
+          text-align: center;
+          padding: 20px;
+          box-sizing: border-box;
+        ">
+          Video not available
+        </div>
       `;
     }
   };
@@ -201,6 +205,10 @@ const Device = ({
                 zIndex: 10,
                 filter: forceDarkMode ? 'brightness(0.6) contrast(1.1)' : 'none'
               }}
+              onError={(e) => {
+                console.warn('Frame image failed to load:', frameConfig.imagePath);
+                e.currentTarget.style.display = 'none';
+              }}
             />
           </>
         )}
@@ -231,6 +239,7 @@ const Device = ({
               loop
               muted
               playsInline
+              preload="metadata"
               style={{
                 height: '100%',
                 width: '100%',
@@ -238,14 +247,19 @@ const Device = ({
               }}
               onError={handleVideoError}
             >
-              <source src={project.teaserUrl} type="video/webm" />
-              <source src={project.teaserUrl.replace('.webm', '.mp4')} type="video/mp4" />
-              <Image
-                src={project.teaserUrl}
-                alt={`${project.title} teaser`}
-                fill
-                style={{ objectFit: 'cover' }}
-              />
+              {project.teaserUrl.endsWith('.webm') && (
+                <source src={project.teaserUrl} type="video/webm" />
+              )}
+              {project.teaserUrl.endsWith('.mp4') && (
+                <source src={project.teaserUrl} type="video/mp4" />
+              )}
+              {/* Fallback: try the other format if one format is provided */}
+              {project.teaserUrl.endsWith('.webm') && (
+                <source src={project.teaserUrl.replace('.webm', '.mp4')} type="video/mp4" />
+              )}
+              {project.teaserUrl.endsWith('.mp4') && (
+                <source src={project.teaserUrl.replace('.mp4', '.webm')} type="video/webm" />
+              )}
             </video>
           ) : shouldLoad ? (
             <Image
