@@ -37,6 +37,12 @@ const BASE_DEVICE_FRAMES: Record<string, Omit<DeviceFrame, 'dimensions' | 'conte
     dimensions: { width: 255, height: 530 },
     contentArea: { vertical: 8, horizontal: 10, borderRadius: 30 }
   },
+  "iphone-16-pro-nonotch": {
+    name: "iPhone 16 Pro",
+    imagePath: "/images/frames/iphone-16-pro-frame-nonotch.png",
+    dimensions: { width: 255, height: 530 },
+    contentArea: { vertical: 8, horizontal: 10, borderRadius: 30 }
+  },
   "iphone-11-pro": {
     name: "iPhone 11 Pro",
     imagePath: "/images/frames/iphone-11-pro-frame.png",
@@ -132,7 +138,7 @@ const Device = ({
   }, [isActive]);
 
 
-  const handleVideoError = (e: React.SyntheticEvent<HTMLVideoElement>) => {
+  const handleVideoError = () => {
     console.warn('Video failed to load:', project.teaserUrl);
     setVideoError(true);
   };
@@ -147,7 +153,7 @@ const Device = ({
     }
   };
 
-  const handleImageError = (e: React.SyntheticEvent<HTMLImageElement>) => {
+  const handleImageError = () => {
     console.warn('Image failed to load:', project.teaserUrl);
     setImageError(true);
   };
