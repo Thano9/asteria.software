@@ -87,7 +87,7 @@ export default function Home() {
       >
         <ProjectCard 
           title="BattleDex" 
-          imageSrc="/images/projects/battledex/icon.png" 
+          imageSrc="/assets/projects/battledex/icon.png" 
           href="/battledex"
           delay={0}
         />

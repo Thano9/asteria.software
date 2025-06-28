@@ -24,8 +24,8 @@ export default function BattleDex() {
   }, []);
 
   // Responsive scale values
-  const desktopScale = 1.3;
-  const mobileScale = 0.8;
+  const desktopScale = 1.28;
+  const mobileScale = 1.1;
   const breakpoint = 400;
 
   // Calculate base scale based on screen size
@@ -36,11 +36,11 @@ export default function BattleDex() {
   // Device configuration
   const battledexProject: DeviceProject = {
     id: 1,
-    title: "BattleDx",
+    title: "BattleDex",
     description: "Master Pokémon Matchups",
     slug: "battledex",
     deviceFrame: "iphone-16-pro-nonotch",
-    teaserUrl: "/images/projects/battledex/teaser.mp4"
+    teaserUrl: "/assets/projects/battledex/teaser.mp4"
   };
 
   return (
@@ -154,7 +154,11 @@ export default function BattleDex() {
         </motion.div>
 
         {/* Bottom spacer */}
-        <div style={{ height: '16px' }} />
+        <div style={{ 
+          height: !hasMounted || windowWidth === null 
+            ? '16px' 
+            : windowWidth <= breakpoint ? '32px' : '0px' 
+        }} />
       </main>
     </div>
   );

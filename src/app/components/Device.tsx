@@ -33,19 +33,19 @@ const BASE_DEVICE_FRAMES: Record<string, Omit<DeviceFrame, 'dimensions' | 'conte
 }> = {
   "iphone-16-pro": {
     name: "iPhone 16 Pro",
-    imagePath: "/images/frames/iphone-16-pro-frame.png",
+    imagePath: "/assets/frames/iphone-16-pro-frame.png",
     dimensions: { width: 255, height: 530 },
     contentArea: { vertical: 8, horizontal: 10, borderRadius: 30 }
   },
   "iphone-16-pro-nonotch": {
     name: "iPhone 16 Pro",
-    imagePath: "/images/frames/iphone-16-pro-frame-nonotch.png",
+    imagePath: "/assets/frames/iphone-16-pro-frame-nonotch.png",
     dimensions: { width: 255, height: 530 },
     contentArea: { vertical: 8, horizontal: 10, borderRadius: 30 }
   },
   "iphone-11-pro": {
     name: "iPhone 11 Pro",
-    imagePath: "/images/frames/iphone-11-pro-frame.png",
+    imagePath: "/assets/frames/iphone-11-pro-frame.png",
     dimensions: { width: 260, height: 530 },
     contentArea: { vertical: 25, horizontal: 24, borderRadius: 25 }
   },
