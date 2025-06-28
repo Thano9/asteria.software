@@ -1,6 +1,6 @@
 "use client";
 
-import { useRef, useEffect } from "react";
+import { useRef, useEffect, useState } from "react";
 import Image from "next/image";
 
 export interface DeviceFrame {
@@ -99,6 +99,8 @@ const Device = ({
 }: DeviceProps) => {
   const videoRef = useRef<HTMLVideoElement | null>(null);
   const isFrameless = project.deviceFrame === 'frameless';
+  const [videoError, setVideoError] = useState(false);
+  const [imageError, setImageError] = useState(false);
   
   const deviceFrames = getDeviceFrames(scale);
   const frameConfig = deviceFrames[project.deviceFrame];
@@ -118,31 +120,21 @@ const Device = ({
     }
   }, [onVideoRef]);
 
+  // Control video playback based on active state
+  useEffect(() => {
+    if (videoRef.current) {
+      if (isActive) {
+        videoRef.current.play().catch(() => {});
+      } else {
+        videoRef.current.pause();
+      }
+    }
+  }, [isActive]);
+
 
   const handleVideoError = (e: React.SyntheticEvent<HTMLVideoElement>) => {
     console.warn('Video failed to load:', project.teaserUrl);
-    const target = e.target as HTMLVideoElement;
-    target.style.display = 'none';
-    const parent = target.parentElement;
-    if (parent) {
-      parent.innerHTML = `
-        <div style="
-          height: 100%; 
-          width: 100%; 
-          background-color: #f3f4f6;
-          display: flex;
-          align-items: center;
-          justify-content: center;
-          color: #6b7280;
-          font-size: 14px;
-          text-align: center;
-          padding: 20px;
-          box-sizing: border-box;
-        ">
-          Video not available
-        </div>
-      `;
-    }
+    setVideoError(true);
   };
 
   const handleImageLoad = (e: React.SyntheticEvent<HTMLImageElement>) => {
@@ -156,14 +148,8 @@ const Device = ({
   };
 
   const handleImageError = (e: React.SyntheticEvent<HTMLImageElement>) => {
-    const target = e.target as HTMLImageElement;
-    target.style.display = 'none';
-    const parent = target.parentElement;
-    if (parent) {
-      parent.innerHTML = `
-        <div style="height: 100%; width: 100%; background-color: #9ca3af;"></div>
-      `;
-    }
+    console.warn('Image failed to load:', project.teaserUrl);
+    setImageError(true);
   };
 
   return (
@@ -224,35 +210,59 @@ const Device = ({
           }}
         >
           {shouldLoad && getContentType(project.teaserUrl) === 'video' ? (
-            <div style={{ position: 'relative', width: '100%', height: '100%' }}>
+            videoError ? (
+              <div style={{
+                height: '100%', 
+                width: '100%', 
+                backgroundColor: '#f3f4f6',
+                display: 'flex',
+                alignItems: 'center',
+                justifyContent: 'center',
+                color: '#6b7280',
+                fontSize: '14px',
+                textAlign: 'center',
+                padding: '20px',
+                boxSizing: 'border-box'
+              }}>
+                Video not available
+              </div>
+            ) : (
               <video
                 ref={videoRef}
                 src={project.teaserUrl}
+                loop
+                muted
+                playsInline
+                autoPlay
                 style={{
                   height: '100%',
                   width: '100%',
                   objectFit: 'cover'
                 }}
-                playsInline
-                autoPlay
-                muted
-                loop
                 onError={handleVideoError}
               >
                 Your browser does not support the video tag.
               </video>
-            </div>
+            )
           ) : shouldLoad ? (
-            <Image
-              src={project.teaserUrl}
-              alt={`${project.title} teaser`}
-              fill
-              style={{ 
-                objectFit: isFrameless ? 'contain' : 'cover'
-              }}
-              onLoad={handleImageLoad}
-              onError={handleImageError}
-            />
+            imageError ? (
+              <div style={{
+                height: '100%', 
+                width: '100%', 
+                backgroundColor: '#9ca3af'
+              }} />
+            ) : (
+              <Image
+                src={project.teaserUrl}
+                alt={`${project.title} teaser`}
+                fill
+                style={{ 
+                  objectFit: isFrameless ? 'contain' : 'cover'
+                }}
+                onLoad={handleImageLoad}
+                onError={handleImageError}
+              />
+            )
           ) : (
             <div style={{
               height: '100%',

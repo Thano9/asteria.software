@@ -86,10 +86,11 @@ This is the official website for Asteria Software, built as a modern, animated p
 - **Features**:
   - Responsive scaling with SSR-safe hydration
   - Multiple device frame support
-  - Video and image content support
-  - Error handling with graceful fallbacks
+  - Video and image content support with autoplay (`autoPlay`, `muted`, `playsInline`, `loop`)
+  - React-compliant error handling with state management (no direct DOM manipulation)
   - Dark mode overlay support
   - Customizable content positioning
+  - Automatic video playback control based on `isActive` state
 
 ### Device Frame System
 - Base frame configurations with scalable dimensions
@@ -107,6 +108,7 @@ This is the official website for Asteria Software, built as a modern, animated p
 - Implemented hydration-safe responsive logic to prevent SSR mismatches
 - Added comprehensive error handling for media content
 - Optimized CSS by removing unused phone mockup styles
+- **Fixed React DOM manipulation error**: Replaced direct `innerHTML` manipulation in error handlers with proper React state management to prevent "Failed to execute 'removeChild'" errors
 
 ## Technical Implementation Details
 
@@ -127,6 +129,18 @@ const scale = !hasMounted || windowWidth === null
 - Mobile (≤680px): Uses `mobileScale` parameter
 - Breakpoint customizable per implementation
 - Smooth transitions on window resize
+
+### Error Handling Architecture
+The Device component uses React state for error management instead of direct DOM manipulation:
+```typescript
+const [videoError, setVideoError] = useState(false);
+const [imageError, setImageError] = useState(false);
+
+const handleVideoError = () => setVideoError(true);
+const handleImageError = () => setImageError(true);
+```
+
+This prevents React DOM conflicts and "removeChild" errors that occur when manually setting `innerHTML`.
 
 ### CSS Architecture
 - Component-specific styles in globals.css
