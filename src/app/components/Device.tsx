@@ -122,7 +122,14 @@ const Device = ({
   useEffect(() => {
     if (videoRef.current) {
       if (isActive) {
-        videoRef.current.play().catch(() => {});
+        // Try to play with better error handling for iOS
+        const playPromise = videoRef.current.play();
+        if (playPromise !== undefined) {
+          playPromise.catch((error) => {
+            console.warn('Video autoplay failed:', error);
+            // On iOS, user interaction might be required
+          });
+        }
       } else {
         videoRef.current.pause();
       }
@@ -239,15 +246,25 @@ const Device = ({
               loop
               muted
               playsInline
+              autoPlay
+              webkit-playsinline="true"
               preload="metadata"
+              controls={false}
               style={{
                 height: '100%',
                 width: '100%',
                 objectFit: 'cover'
               }}
               onError={handleVideoError}
+              onLoadedData={() => {
+                // Force play on iOS after video loads
+                if (videoRef.current && isActive) {
+                  videoRef.current.play().catch(console.warn);
+                }
+              }}
               src={project.teaserUrl}
             >
+              Your browser does not support the video tag.
             </video>
           ) : shouldLoad ? (
             <Image
