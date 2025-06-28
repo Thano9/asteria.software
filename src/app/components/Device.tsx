@@ -250,10 +250,12 @@ const Device = ({
               webkit-playsinline="true"
               preload="metadata"
               controls={false}
+              disablePictureInPicture
               style={{
                 height: '100%',
                 width: '100%',
-                objectFit: 'cover'
+                objectFit: 'cover',
+                pointerEvents: 'none'
               }}
               onError={handleVideoError}
               onLoadedData={() => {
