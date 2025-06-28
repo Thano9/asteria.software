@@ -10,6 +10,9 @@ export default function BattleDex() {
   const [windowWidth, setWindowWidth] = useState<number | null>(null);
   const [hasMounted, setHasMounted] = useState(false);
 
+  // App Store download URL
+  const downloadUrl = "https://apps.apple.com/us/app/battledx-assistant/id6746467637";
+
   // Handle responsive scaling
   useEffect(() => {
     setHasMounted(true);
@@ -37,7 +40,7 @@ export default function BattleDex() {
     description: "Master Pokémon Matchups",
     slug: "battledex",
     deviceFrame: "iphone-16-pro",
-    teaserUrl: "/images/projects/battledex/teaser.webm"
+    teaserUrl: "/images/projects/battledex/teaser.mp4"
   };
 
   return (
@@ -79,7 +82,35 @@ export default function BattleDex() {
             Matchups
           </motion.h1>
           
-          <DownloadButton delay={0.7} />
+          <motion.div
+            initial={{
+              opacity: 0,
+              filter: 'blur(10px)',
+              y: 20,
+              scale: 1
+            }}
+            animate={{
+              opacity: 1,
+              filter: 'blur(0px)',
+              y: 0,
+              scale: 1
+            }}
+            exit={{
+              opacity: 0,
+              filter: 'blur(10px)',
+              y: 20,
+              scale: 1
+            }}
+            transition={{
+              type: "spring",
+              stiffness: 200,
+              damping: 30,
+              mass: 1,
+              delay: 0.7
+            }}
+          >
+            <DownloadButton downloadUrl={downloadUrl} />
+          </motion.div>
         </motion.div>
 
         {/* Phone Mockup */}

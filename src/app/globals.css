@@ -1,16 +1,18 @@
-* {
-  box-sizing: border-box;
-  padding: 0;
-  margin: 0;
-}
+/* ============================================================================
+   IMPORTS & NORMALIZATION
+   ============================================================================ */
+
+@import 'modern-normalize';
+
+/* ============================================================================
+   BASE STYLES & GLOBAL LAYOUT
+   ============================================================================ */
 
 html,
 body {
   max-width: 100vw;
   height: auto;
   min-height: 100dvh;
-  overflow: visible;
-  font-family: Arial, sans-serif;
 }
 
 /* Override html/body styles for main landing page only */
@@ -31,7 +33,6 @@ body {
 
 /* Override body styles for privacy policy page */
 body:has(.privacy-policy-container) {
-  position: static;
   display: block;
   align-items: unset;
   justify-content: unset;
@@ -39,6 +40,15 @@ body:has(.privacy-policy-container) {
   min-height: 100dvh;
   overflow-y: auto;
 }
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+/* ============================================================================
+   MAIN LANDING PAGE
+   ============================================================================ */
 
 .main-container {
   position: relative;
@@ -48,7 +58,6 @@ body:has(.privacy-policy-container) {
   align-items: center;
   gap: 11px;
   max-height: 100dvh;
-  overflow: visible;
 }
 
 .title-container {
@@ -62,11 +71,10 @@ body:has(.privacy-policy-container) {
 
 .asteria-title {
   font-family: 'Instrument Serif', Georgia, 'Times New Roman', serif;
-  font-size: 64px;
+  font-size: 4rem; /* 64px */
   font-weight: 400;
   color: #000000;
   text-align: center;
-  line-height: normal;
   margin: 0;
   font-display: swap;
 }
@@ -82,15 +90,17 @@ body:has(.privacy-policy-container) {
 
 .software-text {
   font-family: 'Nanum Brush Script', 'Brush Script MT', cursive;
-  font-size: 24px;
+  font-size: 1.5rem; /* 24px */
   color: #000000;
-  text-align: left;
   white-space: pre;
   transform: rotate(359deg);
-  line-height: normal;
   margin: 0;
   font-display: swap;
 }
+
+/* ============================================================================
+   PROJECT CARDS (Landing Page)
+   ============================================================================ */
 
 .projects-container {
   display: flex;
@@ -138,13 +148,11 @@ body:has(.privacy-policy-container) {
 
 .card-text {
   font-family: 'Chivo Mono', 'Courier New', monospace;
-  font-size: 14px;
+  font-size: 0.875rem; /* 14px */
   font-weight: 500;
   color: #000000;
-  text-align: left;
   white-space: pre;
   letter-spacing: -0.2px;
-  line-height: normal;
   margin: 0;
   flex-grow: 1;
   margin-left: 4px;
@@ -159,74 +167,27 @@ body:has(.privacy-policy-container) {
   flex-shrink: 0;
 }
 
-a {
-  color: inherit;
-  text-decoration: none;
-}
-
-/* Mobile optimizations */
-/* @media (max-height: 700px) {
-  .asteria-title {
-    font-size: 48px;
-  }
-  
-  .software-text {
-    font-size: 18px;
-  }
-  
-  .title-container {
-    height: 80px;
-  }
-  
-  .software-subtitle {
-    top: 50px;
-    left: 110px;
-  }
-  
-  .main-container {
-    transform: translateY(-5vh);
-  }
-} */
-
-/* @media (max-height: 600px) {
-  .asteria-title {
-    font-size: 40px;
-  }
-  
-  .software-text {
-    font-size: 16px;
-  }
-  
-  .title-container {
-    height: 70px;
-  }
-  
-  .software-subtitle {
-    top: 45px;
-    left: 95px;
-  }
-  
-  .main-container {
-    gap: 8px;
-    transform: translateY(-8vh);
-  }
-} */
+/* ============================================================================
+   MOBILE RESPONSIVE - LANDING PAGE
+   ============================================================================ */
 
 /* iOS Safari specific fixes */
 @media screen and (max-width: 768px) {
   body {
-    height: 100dvh;
+    height: 100svh;
   }
 }
 
-/* Privacy Policy Styles */
+/* ============================================================================
+   PRIVACY POLICY PAGE
+   ============================================================================ */
+
 .privacy-policy-container {
   min-height: 100dvh;
-  background: linear-gradient(180deg, #000000 0%, #272626 100%);
+  background: #000000;
   padding: 20px;
   font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Display', 'SF Pro Text', system-ui, sans-serif;
   overflow-y: auto;
-  position: static;
   display: block;
 }
 
@@ -245,7 +206,7 @@ a {
 
 .back-link {
   font-family: 'Chivo Mono', 'Courier New', monospace;
-  font-size: 14px;
+  font-size: 0.875rem; /* 14px */
   color: #666;
   text-decoration: none;
   transition: color 0.2s ease;
@@ -263,7 +224,7 @@ a {
 
 .privacy-header h1 {
   font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Display', system-ui, sans-serif;
-  font-size: 32px;
+  font-size: 2rem; /* 32px */
   font-weight: 600;
   color: #000;
   margin-bottom: 15px;
@@ -278,7 +239,7 @@ a {
 
 .dates p {
   font-family: 'Chivo Mono', 'Courier New', monospace;
-  font-size: 12px;
+  font-size: 0.75rem; /* 12px */
   color: #666;
   margin: 0;
 }
@@ -293,7 +254,7 @@ a {
 
 .privacy-content h2 {
   font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Display', system-ui, sans-serif;
-  font-size: 24px;
+  font-size: 1.5rem; /* 24px */
   font-weight: 500;
   color: #000;
   margin-bottom: 15px;
@@ -303,7 +264,7 @@ a {
 
 .privacy-content h3 {
   font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Display', system-ui, sans-serif;
-  font-size: 18px;
+  font-size: 1.125rem; /* 18px */
   font-weight: 600;
   color: #000;
   margin-bottom: 10px;
@@ -312,7 +273,7 @@ a {
 
 .privacy-content p {
   font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Text', system-ui, sans-serif;
-  font-size: 14px;
+  font-size: 0.875rem; /* 14px */
   color: #333;
   margin-bottom: 12px;
 }
@@ -325,7 +286,7 @@ a {
 
 .privacy-content li {
   font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Text', system-ui, sans-serif;
-  font-size: 14px;
+  font-size: 0.875rem; /* 14px */
   color: #333;
   margin-bottom: 6px;
 }
@@ -357,7 +318,10 @@ a {
   margin-bottom: 10px;
 }
 
-/* Mobile responsiveness for privacy policy */
+/* ============================================================================
+   MOBILE RESPONSIVE - PRIVACY POLICY
+   ============================================================================ */
+
 @media (max-width: 768px) {
   .privacy-policy-container {
     padding: 15px;
@@ -368,11 +332,11 @@ a {
   }
   
   .privacy-header h1 {
-    font-size: 24px;
+    font-size: 1.5rem; /* 24px */
   }
   
   .privacy-content h2 {
-    font-size: 20px;
+    font-size: 1.25rem; /* 20px */
   }
   
   .dates {
@@ -386,24 +350,29 @@ a {
   }
 }
 
-/* Project Page Styles */
+/* ============================================================================
+   PROJECT PAGES - BASE LAYOUT
+   ============================================================================ */
+
 html:has(.project-container),
 body:has(.project-container) {
   background-color: transparent;
-  position: static;
   display: block;
   align-items: unset;
   justify-content: unset;
   height: auto;
   min-height: 100dvh;
-  background: linear-gradient(180deg, #000000 0%, #272626 100%) no-repeat;
+  background: #000000;
   background-size: 100% 100dvh;
   background-attachment: fixed;
   color: black;
   overscroll-behavior: none;
 }
 
-/* Navigation Header */
+/* ============================================================================
+   PROJECT PAGES - NAVIGATION
+   ============================================================================ */
+
 .navigation-header {
   display: flex;
   justify-content: space-between;
@@ -415,7 +384,7 @@ body:has(.project-container) {
 
 .back-link-project {
   font-family: var(--font-neueBit), -apple-system, BlinkMacSystemFont, 'SF Pro Display', 'SF Pro Text', system-ui, sans-serif;
-  font-size: 20px;
+  font-size: 1.25rem; /* 20px */
   font-weight: bold;
   color: rgba(255, 255, 255, 0.5);
   text-decoration: none;
@@ -434,7 +403,7 @@ body:has(.project-container) {
 
 .nav-link {
   font-family: var(--font-neueBit), -apple-system, BlinkMacSystemFont, 'SF Pro Display', 'SF Pro Text', system-ui, sans-serif;
-  font-size: 18px;
+  font-size: 1.125rem; /* 18px */
   font-weight: bold;
   color: rgba(255, 255, 255, 0.5);
   text-decoration: none;
@@ -448,11 +417,14 @@ body:has(.project-container) {
 .nav-divider {
   color: rgba(255, 255, 255, 0.5);
   font-family: var(--font-neueBit), -apple-system, BlinkMacSystemFont, 'SF Pro Display', 'SF Pro Text', system-ui, sans-serif;
-  font-size: 14px;
+  font-size: 0.875rem; /* 14px */
   font-weight: bold;
 }
 
-/* Main Content Layout */
+/* ============================================================================
+   PROJECT PAGES - MAIN CONTENT
+   ============================================================================ */
+
 .project-main {
   display: flex;
   flex-direction: column;
@@ -465,27 +437,29 @@ body:has(.project-container) {
   margin-bottom: 32px;
 }
 
-/* Title Styling */
 .project-title {
   font-family: var(--font-mondwest), var(--font-instrument-serif), serif;
-  font-size: 88px;
+  font-size: 5.5rem; /* 88px */
   font-weight: 400;
   line-height: 88px;
   margin: 0 0 24px 0;
   background: linear-gradient(180deg, #ffffff 0%, #767676 49.038%);
+  background-clip: text;
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
-  background-clip: text;
+  color: #ffffff;
 }
 
-/* Download Button */
+/* ============================================================================
+   DOWNLOAD BUTTON & SHIMMER EFFECT
+   ============================================================================ */
+
 .download-button-container {
   display: inline-block;
   cursor: pointer;
   position: relative;
 }
 
-/* Shimmer Overlay - positioned to match button area */
 .shimmer-overlay {
   position: absolute;
   top: 8px;
@@ -505,12 +479,11 @@ body:has(.project-container) {
   left: -100%;
   width: 100%;
   height: 100%;
-  background: linear-gradient(
-    90deg,
-    transparent,
-    rgba(255, 255, 255, 0.2),
-    transparent
-  );
+  background: linear-gradient(90deg, 
+    transparent 0%, 
+    rgba(255, 255, 255, 0.3) 50%, 
+    transparent 100%);
+  filter: blur(8px);
   z-index: 20;
 }
 
@@ -546,11 +519,14 @@ body:has(.project-container) {
 
 .download-text {
   font-family: var(--font-mondwest), var(--font-instrument-serif), serif;
-  font-size: 24px;
+  font-size: 1.5rem; /* 24px */
   color: #f1f0f0;
   font-weight: 400;
 }
 
+/* ============================================================================
+   DEVICE COMPONENT UTILITIES
+   ============================================================================ */
 
 .device-no-pointer {
   cursor: default !important;
@@ -560,12 +536,13 @@ body:has(.project-container) {
   cursor: default !important;
 }
 
-/* Mobile Responsive Design */
-@media screen and (max-width: 680px) {
+/* ============================================================================
+   MOBILE RESPONSIVE - PROJECT PAGES
+   ============================================================================ */
 
+@media screen and (max-width: 680px) {
   .project-title {
-    font-size: 72px;
+    font-size: 4.5rem; /* 72px */
     line-height: 72px;
   }
-
 }

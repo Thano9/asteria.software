@@ -246,20 +246,8 @@ const Device = ({
                 objectFit: 'cover'
               }}
               onError={handleVideoError}
+              src={project.teaserUrl}
             >
-              {project.teaserUrl.endsWith('.webm') && (
-                <source src={project.teaserUrl} type="video/webm" />
-              )}
-              {project.teaserUrl.endsWith('.mp4') && (
-                <source src={project.teaserUrl} type="video/mp4" />
-              )}
-              {/* Fallback: try the other format if one format is provided */}
-              {project.teaserUrl.endsWith('.webm') && (
-                <source src={project.teaserUrl.replace('.webm', '.mp4')} type="video/mp4" />
-              )}
-              {project.teaserUrl.endsWith('.mp4') && (
-                <source src={project.teaserUrl.replace('.mp4', '.webm')} type="video/webm" />
-              )}
             </video>
           ) : shouldLoad ? (
             <Image
