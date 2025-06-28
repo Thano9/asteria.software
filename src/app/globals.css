@@ -536,9 +536,10 @@ body:has(.project-container) {
   cursor: default !important;
 }
 
-/* Hide all video controls and overlays */
+/* Hide all video controls and overlays - comprehensive approach */
 video::-webkit-media-controls {
   display: none !important;
+  -webkit-appearance: none !important;
 }
 
 video::-webkit-media-controls-panel {
@@ -588,10 +589,37 @@ video::-webkit-media-controls-fullscreen-button {
 /* Additional CSS to ensure no controls show */
 video {
   outline: none;
+  -webkit-appearance: none;
 }
 
 video:focus {
   outline: none;
+}
+
+/* Force hide any remaining controls with more specific selectors */
+video::-webkit-media-controls-overlay-enclosure {
+  display: none !important;
+}
+
+video::-webkit-media-controls-overlay-play-button {
+  display: none !important;
+  opacity: 0 !important;
+  pointer-events: none !important;
+}
+
+/* Target any shadow DOM elements */
+video::shadow ::-webkit-media-controls-overlay-play-button {
+  display: none !important;
+}
+
+/* Additional fallback for stubborn play buttons */
+video::-internal-media-controls-overlay-cast-button {
+  display: none !important;
+}
+
+/* Ensure no interaction zones */
+video::-webkit-media-controls-overlay {
+  display: none !important;
 }
 
 /* ============================================================================

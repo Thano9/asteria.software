@@ -241,33 +241,48 @@ const Device = ({
           }}
         >
           {shouldLoad && getContentType(project.teaserUrl) === 'video' ? (
-            <video
-              ref={videoRef}
-              loop
-              muted
-              playsInline
-              autoPlay
-              webkit-playsinline="true"
-              preload="metadata"
-              controls={false}
-              disablePictureInPicture
-              style={{
-                height: '100%',
-                width: '100%',
-                objectFit: 'cover',
-                pointerEvents: 'none'
-              }}
-              onError={handleVideoError}
-              onLoadedData={() => {
-                // Force play on iOS after video loads
-                if (videoRef.current && isActive) {
-                  videoRef.current.play().catch(console.warn);
-                }
-              }}
-              src={project.teaserUrl}
-            >
-              Your browser does not support the video tag.
-            </video>
+            <div style={{ position: 'relative', width: '100%', height: '100%' }}>
+              <video
+                ref={videoRef}
+                loop
+                muted
+                playsInline
+                autoPlay
+                webkit-playsinline="true"
+                preload="metadata"
+                controls={false}
+                disablePictureInPicture
+                style={{
+                  height: '100%',
+                  width: '100%',
+                  objectFit: 'cover',
+                  pointerEvents: 'none',
+                  background: 'transparent'
+                }}
+                onError={handleVideoError}
+                onLoadedData={() => {
+                  // Force play on iOS after video loads
+                  if (videoRef.current && isActive) {
+                    videoRef.current.play().catch(console.warn);
+                  }
+                }}
+                src={project.teaserUrl}
+              >
+                Your browser does not support the video tag.
+              </video>
+              {/* Overlay to block any remaining controls */}
+              <div 
+                style={{
+                  position: 'absolute',
+                  top: 0,
+                  left: 0,
+                  right: 0,
+                  bottom: 0,
+                  pointerEvents: 'none',
+                  zIndex: 1
+                }}
+              />
+            </div>
           ) : shouldLoad ? (
             <Image
               src={project.teaserUrl}
