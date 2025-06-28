@@ -356,17 +356,24 @@ a {
 
 html:has(.project-container),
 body:has(.project-container) {
-  background-color: transparent;
+  background-color: #000000;
   display: block;
   align-items: unset;
   justify-content: unset;
   height: auto;
-  min-height: 100dvh;
-  background: #000000;
-  background-size: 100% 100dvh;
-  background-attachment: fixed;
+  min-height: 100svh;
   color: black;
   overscroll-behavior: none;
+}
+
+/* ============================================================================
+   PROJECT PAGES - CONTAINER
+   ============================================================================ */
+
+.project-container {
+  min-height: 100svh;
+  background: linear-gradient(180deg, #000000 0%, #272626 100%);
+  background-attachment: local;
 }
 
 /* ============================================================================
