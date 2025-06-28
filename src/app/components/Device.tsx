@@ -118,23 +118,6 @@ const Device = ({
     }
   }, [onVideoRef]);
 
-  // Control video playback based on active state
-  useEffect(() => {
-    if (videoRef.current) {
-      if (isActive) {
-        // Try to play with better error handling for iOS
-        const playPromise = videoRef.current.play();
-        if (playPromise !== undefined) {
-          playPromise.catch((error) => {
-            console.warn('Video autoplay failed:', error);
-            // On iOS, user interaction might be required
-          });
-        }
-      } else {
-        videoRef.current.pause();
-      }
-    }
-  }, [isActive]);
 
   const handleVideoError = (e: React.SyntheticEvent<HTMLVideoElement>) => {
     console.warn('Video failed to load:', project.teaserUrl);
@@ -244,44 +227,20 @@ const Device = ({
             <div style={{ position: 'relative', width: '100%', height: '100%' }}>
               <video
                 ref={videoRef}
-                loop
-                muted
-                playsInline
-                autoPlay
-                webkit-playsinline="true"
-                preload="metadata"
-                controls={false}
-                disablePictureInPicture
+                src={project.teaserUrl}
                 style={{
                   height: '100%',
                   width: '100%',
-                  objectFit: 'cover',
-                  pointerEvents: 'none',
-                  background: 'transparent'
+                  objectFit: 'cover'
                 }}
+                playsInline
+                autoPlay
+                muted
+                loop
                 onError={handleVideoError}
-                onLoadedData={() => {
-                  // Force play on iOS after video loads
-                  if (videoRef.current && isActive) {
-                    videoRef.current.play().catch(console.warn);
-                  }
-                }}
-                src={project.teaserUrl}
               >
                 Your browser does not support the video tag.
               </video>
-              {/* Overlay to block any remaining controls */}
-              <div 
-                style={{
-                  position: 'absolute',
-                  top: 0,
-                  left: 0,
-                  right: 0,
-                  bottom: 0,
-                  pointerEvents: 'none',
-                  zIndex: 1
-                }}
-              />
             </div>
           ) : shouldLoad ? (
             <Image
