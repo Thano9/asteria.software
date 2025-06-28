@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Instrument_Serif, Nanum_Brush_Script, Chivo_Mono } from "next/font/google";
 import localFont from "next/font/local";
+import { Analytics } from "@vercel/analytics/next";
 import "./globals.css";
 
 const instrumentSerif = Instrument_Serif({
@@ -118,6 +119,7 @@ export default function RootLayout({
     <html lang="en">
       <body className={`${instrumentSerif.variable} ${nanumBrushScript.variable} ${chivoMono.variable} ${mondwest.variable} ${neueBit.variable} antialiased`}>
         {children}
+        <Analytics />
       </body>
     </html>
   );
