@@ -24,6 +24,7 @@ export interface DeviceProject {
   slug: string;
   deviceFrame: string;
   teaserUrl: string;
+  posterUrl?: string;
 }
 
 // Device frame configurations - base dimensions that get scaled
@@ -236,6 +237,7 @@ const Device = ({
               <video
                 ref={videoRef}
                 src={project.teaserUrl}
+                poster={project.posterUrl}
                 loop
                 muted
                 playsInline

@@ -40,7 +40,8 @@ export default function BattleDex() {
     description: "Master Pokémon Matchups",
     slug: "battledex",
     deviceFrame: "iphone-16-pro-nonotch",
-    teaserUrl: "/assets/projects/battledex/teaser.mp4"
+    teaserUrl: "/assets/projects/battledex/teaser.mp4",
+    posterUrl: "/assets/projects/battledex/poster.jpg"
   };
 
   return (
