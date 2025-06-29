@@ -13,6 +13,7 @@ body {
   max-width: 100vw;
   height: auto;
   min-height: 100dvh;
+  font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Display', 'SF Pro Text', system-ui, sans-serif;
 }
 
 /* Override html/body styles for main landing page only */
@@ -186,7 +187,6 @@ a {
   min-height: 100dvh;
   background: #000000;
   padding: 20px;
-  font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Display', 'SF Pro Text', system-ui, sans-serif;
   overflow-y: auto;
   display: block;
 }
@@ -198,22 +198,6 @@ a {
   border-radius: 12px;
   padding: 30px;
   box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
-}
-
-.back-button {
-  margin-bottom: 20px;
-}
-
-.back-link {
-  font-family: 'Chivo Mono', 'Courier New', monospace;
-  font-size: 0.875rem; /* 14px */
-  color: #666;
-  text-decoration: none;
-  transition: color 0.2s ease;
-}
-
-.back-link:hover {
-  color: #000;
 }
 
 .privacy-header {
@@ -551,5 +535,85 @@ body:has(.project-container) {
   .project-title {
     font-size: 4.5rem; /* 72px */
     line-height: 72px;
+  }
+}
+
+/* ============================================================================
+   404 NOT FOUND PAGE
+   ============================================================================ */
+
+.not-found-text {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 16px;
+}
+
+.not-found-title {
+  font-family: var(--font-mondwest), 'Instrument Serif', Georgia, serif;
+  font-size: 6rem;
+  font-weight: 600;
+  line-height: 0.8;
+  margin: 0;
+}
+
+.not-found-subtitle {
+  font-family: var(--font-mondwest), 'Instrument Serif', Georgia, serif;
+  font-size: 2rem;
+  font-weight: 400;
+  color: #000000;
+  margin: 0;
+}
+
+.not-found-button {
+  padding: 12px 24px;
+  border-radius: 8px;
+  font-weight: 400;
+  font-size: .875rem;
+  text-decoration: none;
+  transition: all 0.2s ease;
+  border: 2px solid transparent;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 120px;
+  border-radius: 40px;
+}
+
+.not-found-button.primary {
+  background-color: #000000;
+  color: #ffffff;
+  border-color: #000000;
+}
+
+.not-found-button.primary:hover {
+  background-color: #333333;
+  border-color: #333333;
+  transform: scale(1.05);
+}
+
+/* Mobile responsive for 404 page */
+@media screen and (max-width: 768px) {
+  .not-found-title {
+    font-size: 6rem;
+  }
+  
+  .not-found-subtitle {
+    font-size: 1.5rem;
+  }
+  
+  .not-found-description {
+    font-size: 1rem;
+  }
+  
+  .not-found-actions {
+    flex-direction: column;
+    align-items: center;
+    gap: 12px;
+  }
+  
+  .not-found-button {
+    width: 100%;
+    max-width: 280px;
   }
 }
